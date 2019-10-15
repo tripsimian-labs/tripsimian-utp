@@ -1,0 +1,56 @@
+<p>profile works!</p>
+
+<form [formGroup]="profileForm" (ngSubmit)="onUpdate()">
+
+	  <label>
+		First Name:
+		<input type="text" formControlName="first_name">
+	  </label>
+
+	  <label>
+		Last Name:
+		<input type="text" formControlName="family_name">
+	  </label>
+		<div formGroupName="personal_contact">
+		  <h3>Address</h3>
+
+		  <label>
+			Street:
+			<input type="text" formControlName="address_1">
+		  </label>
+
+		  <label>
+			Street (2):
+			<input type="text" formControlName="address_2">
+		  </label>
+		  
+		  <label>
+			City:
+			<input type="text" formControlName="city">
+		  </label>
+
+		  <label>
+			State:
+			<input type="text" formControlName="state_provence">
+		  </label> 
+
+		  <label>
+			Post Code: 
+			<input type="text" formControlName="postcode">
+		  </label>
+		</div>
+	<button type="submit" [disabled]="!profileForm.valid">Update Profile</button>
+</form>
+<div class="panel panel-default profile-area">
+  <div class="panel-heading">
+    <h3>Profile</h3>
+  </div>
+  <div class="panel-body">
+    <img src="{{profile?.picture}}" class="avatar" alt="avatar">
+    <div>
+      <label><i class="glyphicon glyphicon-user"></i> Nickname</label>
+      <h3 class="nickname">{{ profile?.nickname }}</h3>
+    </div>
+    <pre class="full-profile">{{ profile | json }}</pre>
+  </div>
+</div>
